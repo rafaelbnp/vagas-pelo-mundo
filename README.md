@@ -1,4 +1,4 @@
-# vagas-na-europa
+# vagas-pelo-mundo
 
 ## Project setup
 ```

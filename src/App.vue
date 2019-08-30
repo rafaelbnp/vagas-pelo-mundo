@@ -1,28 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <h1>VagasPeloMundo.dev</h1>
+    <nav>
+      <ul>
+        <li>
+          <router-link to='/'>Home</router-link>
+        </li>
+        <li>
+          <router-link to='/new'>New</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-  },
+  name: 'VagasPeloMundo'
 };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "~bulma/bulma";
 </style>
