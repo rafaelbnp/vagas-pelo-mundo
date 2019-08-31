@@ -1,12 +1,21 @@
 <template>
   <div class="app">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">VagasPeloMundo.dev</h1>
+          <h2 class="subtitle">Jobs para brasileirxs</h2>
+        </div>
+      </div>
+    </section>
     <div class="container">
-      <h1>VagasPeloMundo.dev</h1>
-      <button class="button is-dark is-large" @click="showForm = true">Add</button>
-      <Table :jobs="jobs" />
-      <BulmaModal :isActive="showForm" @onClose="showForm = false">
-        <Form @onCancel="showForm = false" @onSubmit="onSubmit" />
-      </BulmaModal>
+      <div class="vpm-lead">
+        <button class="button is-primary is-large" @click="showForm = true">Add</button>
+        <Table :jobs="jobs" class="vpm-table" />
+        <BulmaModal :isActive="showForm" @onClose="showForm = false">
+          <Form @onCancel="showForm = false" @onSubmit="onSubmit" />
+        </BulmaModal>
+      </div>
     </div>
   </div>
 </template>
@@ -34,4 +43,11 @@ export default {
 
 <style lang="scss">
 @import '~bulma/bulma';
+
+.vpm-lead {
+  padding: 3rem 0;
+}
+.vpm-table {
+  margin-top: 1.5rem;
+}
 </style>

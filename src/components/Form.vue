@@ -2,6 +2,18 @@
   <form @submit.prevent="$emit('onSubmit', job)">
     <div class="field is-horizontal">
       <div class="field-label is-large">
+        <label class="label">Title</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input v-model.trim="job.title" class="input is-large" type="text" autofocus />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-large">
         <label class="label">Link</label>
       </div>
       <div class="field-body">
@@ -20,7 +32,7 @@
         <div class="field">
           <div class="control has-icons-left">
             <div class="select is-large">
-              <select class="country-select" @change="onCountryChange">
+              <select class="vpm-select" @change="onCountryChange">
                 <option></option>
                 <option v-for="(country, key) in countries" :key="key" :value="key">
                   {{ country }}
@@ -28,18 +40,19 @@
               </select>
             </div>
             <div class="icon is-small is-left">
-              <flag :iso="job.country" />
+              <flag v-if="job.country" :iso="job.country" :squared="false" />
+              <font-awesome-icon v-else icon="globe" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="field is-grouped is-grouped-right actions-group">
+    <div class="field is-grouped is-grouped-right vpm-actions">
       <div class="control">
         <button class="button is-white is-large" type="button" @click="$emit('onCancel')">
           Cancel
         </button>
-        <button class="button is-dark is-large" type="submit">Save</button>
+        <button class="button is-primary is-large" type="submit">Save</button>
       </div>
     </div>
   </form>
@@ -53,9 +66,13 @@ export default {
     countries,
     job: {
       country: '',
-      link: ''
+      link: '',
+      title: ''
     }
   }),
+  mounted() {
+    this.$el.querySelector('input[autofocus]').focus();
+  },
   methods: {
     onCountryChange({ target }) {
       this.job.country = target.value;
@@ -65,10 +82,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.country-select {
+.vpm-select {
   width: 100%;
 }
-.actions-group {
-  margin-top: 1.5rem; // TODO: is there a bulma variable to calculate this? (e.g. 2x field margin)
+.vpm-actions {
+  margin-top: 1.5rem;
 }
 </style>
