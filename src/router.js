@@ -1,13 +1,11 @@
 import VueRouter from 'vue-router';
-import Table from './components/Table.vue';
+import Form from '@/components/Form.vue';
+import Table from '@/components/Table.vue';
 
-const router = new VueRouter({
+export default new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: Table },
-    // { path: '/register', component: Register },
-    // { path: '/login', component: Login }
+    { path: '/new', component: Form }
   ]
 });
-
-export default router;

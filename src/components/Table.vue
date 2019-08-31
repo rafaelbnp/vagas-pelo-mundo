@@ -1,30 +1,31 @@
 <template>
-  <table class="table">
+  <table class="table is-hoverable is-size-4">
     <thead>
       <tr>
-        <th>Vaga ID</th>
+        <th>Country</th>
         <th>Link</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>1</th>
-        <th>link1</th>
-      </tr>
-      <tr>
-        <th>2</th>
-        <th>link2</th>
-      </tr>
-      <tr>
-        <th>3</th>
-        <th>link3</th>
+      <tr v-for="job in jobs" :key="job.country">
+        <th>
+          <flag :iso="job.country" />
+        </th>
+        <th>{{ job.link }}</th>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    jobs: {
+      type: Array,
+      required: true
+    }
+  }
+};
 </script>
 
 <style>
